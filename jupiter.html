@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+            JupiterWeb
+        </title>
+        <style>
+            header {
+                gap: 2vh;
+                margin-bottom: 1vh;
+            }
+
+            #img1 {
+                margin: 2vh;
+            }
+
+            .container  {
+                display: flex;
+                flex-direction: row;
+                margin-top: 2vh;
+                margin-left: 2vh;
+                nav {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1vh;
+                    
+                }
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                
+            }
+
+            a:hover {
+                background-color: gray;
+            }
+
+            #links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3vh;
+                border: 1px solid gray;
+                border-radius: 3px;
+                width: 5vw;
+                font-size:small; 
+                
+                text-align: center;
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: 1vh;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="usp-logo.png" style="width: 20vh;" id="img1">
+            <img src="usp-logo-texto.png" style="width: 40vh;" id="img1">
+            
+        </header>
+        <div style="background-color:#fcb421; height: 1vh;">  </div>
+        <div style="background-color:#64c4d0; height: 1vh;">  </div>
+        <div style="background-color:#1094ab; height: 3vh;">  </div>
+
+        <div class="container">
+            <div>
+                <nav>
+                    <div id="links">
+                        <div style="background-color: gray; color: white;">
+                             Privado
+                        </div>
+                        
+                        <a>Link1</a>
+                        <a>Link2</a>
+                        <a>Link3</a>
+                        <a>Link4</a>
+                    </div>
+                    
+                    <div id="links">
+                        <div style="background-color: gray; color: white;">
+                             Restrito
+                        </div>
+
+                        <a>Link1</a>
+                        <a>Link2</a>
+                        <a>Link3</a>
+                        <a>Link4</a>
+                    </div>
+                    
+                </nav>
+            </div>
+
+            <form style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                <input type="text" placeholder="Usuário">
+                <input type="password" placeholder="Senha">
+                <input type="submit" value="Enviar" style="margin-top: 1vh;">
+            </form>
+        </div>
+
+    </body>
+
+
+</html>
