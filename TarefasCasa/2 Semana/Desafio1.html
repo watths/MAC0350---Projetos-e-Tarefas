@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      
+        <style>
+
+	  body {
+	      background-color: white;
+	      display: flex;
+	      flex-direction: column;
+	      justify-content: center;
+	      align-items: center;
+	      height: 100vh;
+	      margin: 0;
+	  }
+
+	  button {
+	      padding: 10px 20px;
+	      font-size: 16px;
+	      cursor: pointer;
+	  }
+        </style>
+    </head>
+    
+    <body>
+        <h1>A luz está APAGADA</h1>
+        <button onclick="alternarLuz()">Interruptor</button>      
+    </body>
+
+    <script>
+
+      function alternarLuz() {
+	  let texto = document.querySelector("h1")
+
+	  if(texto.innerHTML === "A luz está APAGADA")
+	      texto.innerHTML = "A luz está ACESA"
+	  
+	  else
+	      texto.innerHTML = "A luz está APAGADA"
+	  
+      }
+      
+    </script>
+
+
+</html>

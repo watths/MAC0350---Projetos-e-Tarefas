@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      
+        <style>
+
+	  body {
+	      background-color: white;
+	      display: flex;
+	      flex-direction: column;
+	      justify-content: center;
+	      align-items: center;
+	      height: 100vh;
+	      margin: 0;
+	  }
+
+	  button {
+	      padding: 10px 20px;
+	      font-size: 16px;
+	      cursor: pointer;
+	  }
+        </style>
+    </head>
+    
+    <body>
+        <h1>2</h1>
+        <button onclick="dobrar()">dobrar</button>      
+    </body>
+
+    <script>
+
+      function dobrar() {
+	  
+	  let valor = document.querySelector("h1").innerHTML
+	  
+	  if(valor > 100){
+	      alert(`Cuidado, o número ${valor} está ficando muito grande!`)
+	  }
+	  
+	  document.querySelector("h1").innerHTML = 2*valor;
+
+	  
+      }
+      
+    </script>
+
+
+</html>
