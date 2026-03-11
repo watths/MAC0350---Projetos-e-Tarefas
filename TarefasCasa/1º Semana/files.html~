@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelly Rosa Braghetto</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="sidebar">
+    <img src="fotokelly.jpeg" alt="Imagem" class="profile-img">
+    <h2>Kelly Rosa Braghetto</h2>
+    <a href="paginaprofessor.html">Main Page</a>
+    <a href="talks.html">Talks and Tutorials</a>
+    <a href="courses.html">Courses</a>
+    <a href="education.html">Education</a>
+    <a href="publications.html">Publications</a>
+    <a href="awards.html">Academic Awards</a>
+    <a href="files.html" class="active">Files</a>
+    <a href="software.html">Developed Softwares</a>
+    <a href="lattes.html">My Lattes Curriculum</a>
+  </div>
+
+  <div class="content">
+    <button id="toggleSidebar">☰ Menu</button>
+    <h1>Files</h1>
+    
+    
+    <section>
+      <h2>Presentations</h2>
+    </section>
+
+    <footer>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>

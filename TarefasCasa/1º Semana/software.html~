@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelly Rosa Braghetto</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="sidebar">
+    <img src="fotokelly.jpeg" alt="Imagem" class="profile-img">
+    <h2>Kelly Rosa Braghetto</h2>
+    <a href="paginaprofessor.html">Main Page</a>
+    <a href="talks.html" class="active">Talks and Tutorials</a>
+    <a href="courses.html">Courses</a>
+    <a href="education.html">Education</a>
+    <a href="publications.html">Publications</a>
+    <a href="awards.html">Academic Awards</a>
+    <a href="files.html">Files</a>
+    <a href="software.html">Developed Softwares</a>
+    <a href="lattes.html">My Lattes Curriculum</a>
+  </div>
+
+  <div class="content">
+    <button id="toggleSidebar">☰ Menu</button>
+    <h1>Developed Softwares</h1>
+    
+    <section>
+      <ul class="custom-list">
+      		<li><a href="bp2san/" class="el">BP2SAN</a> — From Business Process models to Stochastic Automata Networks</li>
+      		<li><a href="nptool/" class="el">NPTool</a> — A Tool to Control Workflow Processes in a Relational Database Model</li>
+	</ul>
+      
+    </section>
+
+    <footer>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
