@@ -12,4 +12,5 @@ The code implements an email website, the user can:
 
 - See received e-mails
 - Send e-mails
+- Search and navigate through e-mails
   
