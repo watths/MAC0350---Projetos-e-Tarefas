@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Email</title>
+  <title>USPmail</title>
   <link rel="stylesheet" href="style.css">
   
 </head>
 <body>
-  <div id="form-container">
-
-    <div>
+  <div id="container">
+    
+    <div id="title">
+      <img src="icone.png" id="icone"> </img>
+      <h1>Faça login</h1>
     </div>
     
     <div>
       <form>
-	<input type="text" placeholder="Usuário"> 
+	<input type="text" placeholder="E-mail">
+	<a href="teste" style="color: #91A8ED;">Esqueceu o e-mail?</a>
 	<input type="password" placeholder="Senha"> 
-	<a style="align-self: flex-start; color: blue;">Esqueci a senha</a>
-	<input type="submit" value="Enviar" style="margin-top: 1vh;">
+	<a href="teste" style="color: #91A8ED;">Esqueci a senha</a>
+
+	<div id="divisao">
+	  <button id="botao_criarconta">Criar Conta</button>
+	  <button id="enviar">Enviar</button>
+	</div>
 	
       </form>
     </div>
