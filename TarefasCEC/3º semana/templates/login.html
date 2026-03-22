@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+            aula5
+        </title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+      
+      <p>Faça login:.</p>
+      <form>
+	<input type="text" id="nome" placeholder="Nome">
+	<input type="password" id="senha" placeholder="Senha">
+	<button type="button" onclick="login()">Logar</button>
+      </form>
+
+      <script>
+	async function login() {
+	    
+	    const username = document.getElementById('nome').value;
+
+	    const resposta = await fetch('/login?username=' + username, {
+		    method: 'POST'
+	    });
+
+	    
+	    if (resposta.ok) {
+		alert("Login feito!");
+	    } else {
+		alert("Usuário não encontrado!");
+	    }
+	}
+
+
+      </script>
+	
+
+    </body>
+
+
+
+</html>
+
+

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+            aula5
+        </title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+      
+      <p>Faça login:.</p>
+      <form>
+	<input type="text" id="nome" placeholder="Nome">
+	<input type="password" id="senha" placeholder="Senha">
+	<button type="button" onclick="login()">Logar</button>
+      </form>
+
+      <script>
+	async function login() {
+	    const dados = {
+		nome: document.getElementById('nome').value,
+		senha: document.getElementById('senha').value,
+		bio: document.getElementById('bio').value
+	    };
+
+	    const username = document.getElementById('nome').value;
+	    
+	    const resposta = await fetch('/usuarios', {
+		method: 'POST',
+		headers: {
+		    'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(dados)
+	    });
+
+	    if (resposta.ok) {
+		
+		const chama_login = await fetch('/login?username=' + username, {
+		    method: 'POST'
+		});
+		
+		const resultado = await resposta.json();
+		alert("Usuário " + resultado.usuario + " criado!");
+	    } else {
+		alert("Erro ao enviar!");
+	    }
+	}
+
+
+      </script>
+	
+      </script>
+
+    </body>
+
+
+
+</html>
+
+
