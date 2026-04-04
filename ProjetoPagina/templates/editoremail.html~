@@ -1,0 +1,12 @@
+<form id="editor_email"
+      hx-put="/emails/{{ email.id }}"
+      hx-target="#conteudo"
+      hx-swap="innerHTML"
+      >
+  <input type="text" name="titulo" id="titulo" placeholder="Título do e-mail" value="{{ email.titulo }}">
+  <textarea name="mensagem" id="mensagem">{{ email.mensagem }} </textarea>
+
+  <button type="submit" id="botaoenviar">
+    Enviar
+  </button>
+</form>

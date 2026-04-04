@@ -1,0 +1,13 @@
+<form id="escrever_email"
+      hx-post="/enviar_email"
+      hx-target="#conteudo"
+      hx-swap="innerHTML"
+      >
+  <input type="text" name="titulo" id="titulo" placeholder="Título do e-mail">
+  <input type="text" name="destino" id="destino" placeholder="Destinatário">
+  <textarea name="mensagem" id="mensagem"></textarea>
+
+  <button type="submit" id="botaoenviar">
+    Enviar
+  </button>
+</form>

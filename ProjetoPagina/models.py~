@@ -1,0 +1,39 @@
+from typing import List, Optional
+from sqlmodel import Field, Relationship, SQLModel
+
+class Usuario(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    email: str = Field(index=True, unique=True)
+    senha: str
+    
+    emails_enviados: List["Email"] = Relationship(
+        back_populates="remetente", 
+        sa_relationship_kwargs={"foreign_keys": lambda: [Email.remetente_id]}
+    )
+
+    emails_recebidos: List["Email"] = Relationship(
+        back_populates="destinatario",
+        sa_relationship_kwargs={"foreign_keys": lambda: [Email.destinatario_id]}
+    )
+
+class Email(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    titulo: str
+    mensagem: str
+
+    remetente_id: int = Field(foreign_key="usuario.id")
+    destinatario_id: int = Field(foreign_key="usuario.id")
+
+    remetente: "Usuario" = Relationship(
+        back_populates="emails_enviados",
+        sa_relationship_kwargs={"foreign_keys": lambda: [Email.remetente_id]}
+    )
+
+    destinatario: "Usuario" = Relationship(
+        back_populates="emails_recebidos",
+        sa_relationship_kwargs={"foreign_keys": lambda: [Email.destinatario_id]}
+    )
+
+
+Usuario.update_forward_refs()
+Email.update_forward_refs()

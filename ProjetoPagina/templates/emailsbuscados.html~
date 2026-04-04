@@ -1,0 +1,16 @@
+<ul id="custom-list"> 
+  {% for email in emails %}
+  <li
+    hx-get="/email/{{ email.id }}"
+    hx-trigger="click"
+    hx-target="#conteudo"
+    hx-swap="innerHTML"
+    >
+    <h1> {{ email.titulo }} </h1>
+    <h4> De: {{ email.remetente }} </h4>
+    <div>{{ email.tempo }}</div>
+  </li>
+  {% else %}
+  <li> <h1> Não há emails! </h1> </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,5 @@
+<h1> {{ email.titulo }} </h1>
+De: {{ email.remetente }}
+Para: {{ email.destinatario }}
+
+{{ email.mensagem }}

@@ -1,0 +1,4 @@
+
+<input type="text" id="busca" placeholder="Título do e-mail">
+<input type="text" id="busca" placeholder="Destinatário">
+<input type="text" id="mensagem" placeholder="mensagem">

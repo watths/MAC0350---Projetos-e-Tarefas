@@ -1,0 +1,43 @@
+
+<div id="tit-cont">
+  <h1> {{ email.titulo }} </h1>
+</div>
+<h4>{{ email.tempo }}, {{ email.data }}</h4>
+<h3> De: {{ email.remetente }} </h3> 
+<h3> Para: {{ email.destinatario }} </h3>
+
+<p class="mensagem">{{ email.mensagem }} </p>
+<hr>
+
+<br>
+
+<div id="respostas">
+  {% for r in respostas %}
+  <div class="resposta">
+    <h1> Resposta de: {{ r.autor }}</h1>
+    <h4>{{ r.tempo }}, {{ r.data }}</h4>
+  
+    <p class="mensagem">{{ r.mensagem }}</p>
+  </div>
+  <hr>
+  <br>
+  
+  {% endfor %}
+</div>
+
+  <button id="botaoenviar" style="width: 7vw;" onclick="document.getElementById('form-resposta').style.display='block'">
+    Responder
+  </button>
+  
+<div> 
+  <form id="form-resposta"
+	style="display:none;"
+	hx-post="/emails/{{ email.id }}/responder"
+	hx-target="#conteudo"
+	hx-swap="innerHTML">
+
+    <textarea style="margin-top: 1vh;" name="mensagem" id="mensagem" placeholder="Digite sua resposta"></textarea>
+    <br>
+    <button style="margin-top: 1vh;" type="submit" id="botaoenviar">Enviar</button>
+  </form>
+</div>

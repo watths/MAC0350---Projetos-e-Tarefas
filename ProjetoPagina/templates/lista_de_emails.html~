@@ -1,0 +1,7 @@
+<ul class="custom-list"> 
+  {% for email in emails %}
+  <li> <h1> {{ email.titulo }} </h1> </li>
+  {% else %}
+  <li> <h1> Não há emails! </h1> </li>
+  {% endfor %}
+</ul>

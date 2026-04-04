@@ -1,0 +1,29 @@
+<DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Meu Site</title>
+        <script src="HTMX"></script> 
+    </head>
+    <body>
+        <h1>Meu Site</h1>
+        <p>Bem vindo ao meu site!</p>
+        <nav>
+            <button hx-get="/home/pagina1"
+                    hx-target="main"
+                    hx-push-url="true">
+                Página 1
+            </button>
+            <button hx-get="/home/pagina2"
+                    hx-target="main"
+                    hx-push-url="true">
+                Página 2
+            </button>
+        </nav>
+        <hr>
+        <main hx-get="{{ pagina }}"
+              hx-target="main"
+              hx-trigger="load"
+              hx-push-url="true">
+        </main>
+    </body>
+</html>

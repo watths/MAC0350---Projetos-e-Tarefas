@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>USPMail</title>
+    <link rel="stylesheet" href="/static/style_email.css?v=123">
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.js" integrity="sha384-ezjq8118wdwdRMj+nX4bevEi+cDLTbhLAeFF688VK8tPDGeLUe0WoY2MZtSla72F" crossorigin="anonymous"> </script>
+    <script>
+      window.onload = function() {
+	  alert("Bem-vindo à página {{ email }}!");
+      };
+    </script>
+  </head>
+  <body>
+    <header>
+      
+      <img src="/static/icone.png" id="icone"> </img>
+      
+      <input type="text" id="busca" placeholder="Buscar e-mail por título"
+	     hx-get="/buscaremails"
+	     hx-target="#conteudo"
+	     hx-trigger="input changed delay:500ms"
+	     name="busca"
+	     >
+      
+      <button id="botao" onclick="pagina_login()">Logout</button>
+ 
+    </header>
+
+    <div id="container">
+      <div id="sidebar">
+	<nav>
+
+	  <button class="botaonav"
+		  hx-get="/escrever_email"
+		  hx-target="#conteudo"
+		  hx-swap="innerHTML">
+	    
+	    Escrever e-mail
+	  </button>
+	  
+	  <button class="botaonav"
+		  hx-get="/lista_recebidos"
+		  hx-target="#conteudo"
+		  hx-swap="innerHTML">
+	    Caixa de Entrada
+	  </button>
+	  
+	  <button class="botaonav"
+		  hx-get="/lista_enviados"
+		  hx-target="#conteudo"
+		  hx-swap="innerHTML">
+	    Enviados
+	  </button>
+	  
+	</nav>
+      </div>
+      
+      <div id="emails">
+	<div id="conteudo">
+	  <ul class="custom-list"> 
+	   
+	    <li> <h1> Bem-vindo ao USPmail, {{ email }}! </h1> </li>
+	    
+	  </ul>
+	</div>
+      </div>
+      
+      
+    </div>
+  </body>
+
+  <script src="/static/script.js"></script>
+
+</html>

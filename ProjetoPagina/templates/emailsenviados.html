@@ -1,0 +1,38 @@
+<ul class="custom-list"> 
+  {% for email in emails %}
+  <li
+    id="email{{ email.id }}"
+    hx-get="/email/{{ email.id }}"
+    hx-trigger="click"
+    hx-target="#conteudo"
+    hx-swap="innerHTML">
+    
+    <h1> {{ email.titulo }} </h1>
+    <h4> Para: {{ email.destinatario }} </h4>
+    <div>{{ email.tempo }}</div>
+
+    <button
+      hx-get="/emails/{{ email.id }}/editar"
+      hx-target="#conteudo"
+      hx-swap="innerHTML"
+      onclick="event.stopPropagation()"
+      >
+      Editar
+    </button>
+    
+    <button
+      hx-delete="/emails/{{ email.id }}"
+      hx-target="#email{{ email.id }}"
+      hx-swap="outerHTML"
+      hx-confirm="Tem certeza que deseja apagar este email?"
+      onclick="event.stopPropagation()">
+      
+      Deletar
+    </button>
+    
+  </li>
+  {% else %}
+  <li> <h1> Não há emails! </h1> </li>
+  {% endfor %}
+</ul>
+

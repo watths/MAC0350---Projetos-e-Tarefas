@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USPmail</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div id="container">
+    
+    <div id="title">
+      <img src="icone.png" id="icone"> </img>
+      <h1>Crie sua Conta</h1>
+    </div>
+    
+    <div>
+      <form>
+	<input type="text" placeholder="E-mail">
+	<input type="password" placeholder="Senha">
+	<input type="password" placeholder="Confirme sua Senha">
+
+	<div id=divisao>
+	  <button type="button" id="botao_criarconta" onclick="pagina_login()">Página de Login</button>
+	  <button id="enviar">Criar Conta</button>
+	</div>
+	
+      </form>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+  
+</body>
+</html>

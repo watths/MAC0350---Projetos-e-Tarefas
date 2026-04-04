@@ -4,34 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>USPmail</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/static/style.css">
   
 </head>
 <body>
   <div id="container">
     
     <div id="title">
-      <img src="icone.png" id="icone"> </img>
+      <img src="/static/icone.png" id="icone"> </img>
       <h1>Faça login</h1>
     </div>
     
     <div>
       <form>
-	<input type="text" placeholder="E-mail">
+	<input type="text" id="email" placeholder="E-mail">
 	<a href="teste" style="color: #91A8ED;">Esqueceu o e-mail?</a>
-	<input type="password" placeholder="Senha"> 
+	<input type="password" id="senha" placeholder="Senha"> 
 	<a href="teste" style="color: #91A8ED;">Esqueci a senha</a>
 
 	<div id="divisao">
-	  <button id="botao_criarconta">Criar Conta</button>
-	  <button id="enviar">Enviar</button>
+	  <button type="button" id="botao_criarconta" onclick="pagina_criarconta()">Criar Conta</button>
+	  <button type="button" id="enviar" onclick="login()" >Entrar</button>
 	</div>
 	
       </form>
     </div>
   </div>
   
-  <script src="script.js"></script>
+  <script src="/static/script.js"></script>
   
 </body>
 </html>
