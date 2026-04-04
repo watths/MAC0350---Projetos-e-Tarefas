@@ -110,3 +110,49 @@ input {
     color: #C0D0FF;
     background-color: rgb(70,70,70);
 }
+
+@media (max-width: 800px) {
+
+    #container {
+	display: flex;
+	flex-direction: column;
+	width: 70vw;
+	height: 80vh;
+    }
+
+    #icone {
+	margin-top: 10vh;
+	width: 20vw;
+    }
+    
+    #botao_criarconta {
+	height: 7vh;
+	width: 20vw;
+    }
+
+    #enviar {
+	height: 7vh;
+	width: 20vw;
+    }
+
+    form {
+	margin-bottom: 10vh;
+    }
+
+    #senha {
+	width: 50vw;
+    }
+
+    #email {
+	width: 50vw;
+    }
+
+    #confirma_senha {
+	width: 50vw;
+    }
+    
+    #divisao {
+	flex-direction: column;
+    }
+    
+}

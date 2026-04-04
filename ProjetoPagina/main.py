@@ -271,6 +271,7 @@ def responder(request: Request,  email_id: int, user: Usuario = Depends(get_acti
             })
 
         email = {
+            "id": busca.id,
             "titulo": busca.titulo,
             "remetente": busca.remetente.email,
             "destinatario": busca.destinatario.email,
