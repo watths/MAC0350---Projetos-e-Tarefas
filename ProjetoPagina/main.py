@@ -1,3 +1,6 @@
+
+# imports necessários para o funcionamento do projeto
+
 from fastapi import FastAPI, Request,Depends, HTTPException, status, Cookie, Response, Form
 from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
@@ -6,11 +9,12 @@ from typing import Annotated
 from sqlmodel import SQLModel, create_engine, Session, select
 from models import Usuario, Email, RespostaEmail
 
+# setup do Fastapi 
 app = FastAPI()
-
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
+# setup do SQL
 arquivo_sqlite = "database.db"
 url_sqlite = f"sqlite:///{arquivo_sqlite}"
 engine = create_engine(url_sqlite)
@@ -22,19 +26,21 @@ def create_db():
 def on_startup() -> None:
     create_db()
 
+# rota root que abre a página de login
 @app.get("/")
 def login(request : Request):
     return templates.TemplateResponse(
         request=request, name="login.html"
     )
 
+# rota para abertura da página de criação de contas
 @app.get("/criarcontahtml", response_class=HTMLResponse)
 def criarcontahtml(request: Request):
     return templates.TemplateResponse(
         request=request, name="criarconta.html"
     )
     
-
+# rota para criação de contas no banco de dados
 @app.post("/usuarios")
 def criar_usuario(user : Usuario):
     with Session(engine) as session:
@@ -49,7 +55,7 @@ def criar_usuario(user : Usuario):
         
     return {"usuario": user.email}
 
-
+# rota para logar e setar o cookie
 @app.post("/login")
 def logar(email: str, senha: str, response: Response):
 
@@ -66,7 +72,7 @@ def logar(email: str, senha: str, response: Response):
         response.set_cookie(key="session_user", value=email)
         return {"message": "Logado com sucesso"}
 
-
+# função auxiliar que captura o usuário logado no cookie
 def get_active_user(session_user: Annotated[str | None, Cookie()] = None):
 
     if not session_user:
@@ -84,6 +90,7 @@ def get_active_user(session_user: Annotated[str | None, Cookie()] = None):
 
         return user
 
+# rota para o acesso à pagina do email
 @app.get("/uspmail")
 def show_profile(request: Request, user: Usuario = Depends(get_active_user)):
     return templates.TemplateResponse(
@@ -92,6 +99,7 @@ def show_profile(request: Request, user: Usuario = Depends(get_active_user)):
         context={"email": user.email}
     ) 
 
+# rota para o acesso aos emails recebidos do usuário
 @app.get("/lista_recebidos", response_class=HTMLResponse)
 def lista(request: Request, user: Usuario = Depends(get_active_user)):
 
@@ -99,6 +107,7 @@ def lista(request: Request, user: Usuario = Depends(get_active_user)):
         query = select(Email).where(Email.destinatario_id == user.id).order_by(Email.criado_em.desc())
         emails = session.exec(query).all()
 
+        # lista com os emails e informações relevantes a serem acessadas do email
         emailsfinal = []
         for e in emails:
             emailsfinal.append({
@@ -109,14 +118,16 @@ def lista(request: Request, user: Usuario = Depends(get_active_user)):
             })
         
         return templates.TemplateResponse(request, "emailsrecebidos.html", {"emails": emailsfinal})
-    
+
+# rota para o acesso aos emails enviados do usuário
 @app.get("/lista_enviados", response_class=HTMLResponse)
 def lista2(request: Request, user: Usuario = Depends(get_active_user)):
     
     with Session(engine) as session:        
         query = select(Email).where(Email.remetente_id == user.id).order_by(Email.criado_em.desc())
         emails = session.exec(query).all()
-   
+
+        # lista com os emails e informações relevantes a serem acessadas do email
         emailsfinal = []
         for e in emails:
             emailsfinal.append({
@@ -128,10 +139,12 @@ def lista2(request: Request, user: Usuario = Depends(get_active_user)):
     
         return templates.TemplateResponse(request, "emailsenviados.html", {"emails": emailsfinal})
 
+# rota para acesso à pagina de escrever email
 @app.get("/escrever_email", response_class=HTMLResponse)
 def escrever(request: Request):
     return templates.TemplateResponse(request, "escreveremail.html")
 
+# rota para o envio de emails
 @app.post("/enviar_email")
 def enviar(titulo: str = Form(...), destino: str = Form(...), mensagem: str = Form(...), user: Usuario = Depends(get_active_user)):
     
@@ -153,13 +166,15 @@ def enviar(titulo: str = Form(...), destino: str = Form(...), mensagem: str = Fo
         session.commit()
 
     return HTMLResponse("<h1> Email enviado! </h1>")
-    
+
+# rota para visualizar um email específico selecionado pelo usuário
 @app.get("/email/{email_id}", response_class=HTMLResponse)
 def ver_email(request: Request, email_id: int):
     with Session(engine) as session:
         query = select(Email).where(Email.id == email_id)
         busca = session.exec(query).first()
 
+        # informações relevantes do email a serem acessadas
         email = {
             "id": busca.id,
             "titulo": busca.titulo,
@@ -170,6 +185,7 @@ def ver_email(request: Request, email_id: int):
             "tempo": str(busca.criado_em)[11:16]
         }
 
+        # lista de respostas e informações a serem acessadas
         respostas = []
         for r in busca.respostas:
             respostas.append({
@@ -181,7 +197,7 @@ def ver_email(request: Request, email_id: int):
         
         return templates.TemplateResponse(request, "visualizaremail.html", {"email": email, "respostas": respostas})
 
-
+# rota para realizar busca de emails e retornar o html
 @app.get("/buscaremails", response_class=HTMLResponse)
 def buscar(request: Request, busca: str | None=''):
 
@@ -189,6 +205,7 @@ def buscar(request: Request, busca: str | None=''):
         query = select(Email).where(Email.titulo.contains(busca)).order_by(Email.criado_em.desc())
         emails = session.exec(query).all()
 
+        # lista de email com as informações relevantes a serem mostradas
         emailsfinal = []
         for e in emails:
             emailsfinal.append({
@@ -201,7 +218,7 @@ def buscar(request: Request, busca: str | None=''):
     
     return templates.TemplateResponse(request, "emailsbuscados.html", {"emails": emailsfinal})
         
-
+# rota para deleção de emails
 @app.delete("/emails/{email_id}", response_class=HTMLResponse)
 def deletar_email(email_id: int, request : Request):
     with Session(engine) as session:
@@ -209,9 +226,11 @@ def deletar_email(email_id: int, request : Request):
 
         session.delete(email)
         session.commit()
-        
+
+    # retorno da string nula para atualizar diretamente na lista de emails enviados
     return ''
 
+# rota para acesso a página de edição de emails
 @app.get("/emails/{email_id}/editar", response_class=HTMLResponse)
 def editar(request: Request, email_id: int):
     with Session(engine) as session:
@@ -219,6 +238,7 @@ def editar(request: Request, email_id: int):
 
     return templates.TemplateResponse(request, "editoremail.html", {"request": request, "email": email})
 
+# rota para efetuar a edição do email
 @app.put("/emails/{email_id}", response_class=HTMLResponse)
 def atualizar_email(request: Request, email_id: int, titulo: str = Form(...), mensagem: str = Form(...),  user: Usuario = Depends(get_active_user)):
     
@@ -234,6 +254,7 @@ def atualizar_email(request: Request, email_id: int, titulo: str = Form(...), me
         query = select(Email).where(Email.remetente_id == user.id).order_by(Email.criado_em.desc())
         emails = session.exec(query).all()
 
+        # lista de emails enviados para, ao editar, retornar a página com os emails enviados
         emailsfinal = []
         for e in emails:
             emailsfinal.append({
@@ -245,7 +266,7 @@ def atualizar_email(request: Request, email_id: int, titulo: str = Form(...), me
     
     return templates.TemplateResponse(request, "emailsenviados.html", {"emails": emailsfinal})
 
-
+# rota para adicionar respostas de emails
 @app.post("/emails/{email_id}/responder", response_class=HTMLResponse)
 def responder(request: Request,  email_id: int, user: Usuario = Depends(get_active_user), mensagem: str = Form(...)):
     with Session(engine) as session:
@@ -261,6 +282,7 @@ def responder(request: Request,  email_id: int, user: Usuario = Depends(get_acti
         query = select(Email).where(Email.id == email_id)
         busca = session.exec(query).first()
 
+        # lista de respostas do email respondido
         respostas = []
         for r in busca.respostas:
             respostas.append({
@@ -270,6 +292,7 @@ def responder(request: Request,  email_id: int, user: Usuario = Depends(get_acti
                 "data": str(r.criado_em)[:10]
             })
 
+        # informações do email a serem retornadas para, assim que responder, retornar o html com o email + respostas
         email = {
             "id": busca.id,
             "titulo": busca.titulo,
