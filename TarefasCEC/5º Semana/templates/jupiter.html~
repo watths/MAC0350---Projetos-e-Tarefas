@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+            JupiterWeb
+        </title>
+        <style>
+            header {
+                gap: 2vh;
+                margin-botton: 1vh;
+            }
+
+            #img1 {
+                margin: 2vh;
+            }
+
+            .container  {
+                display: flex;
+                flex-direction: row;
+                margin: 2vh;
+
+		
+                
+            }
+
+	    .fundo {
+		position: fixed;
+		background-image: url("uspfundo.png");
+                background-size: cover;
+		background-position: center;
+		filter: blur(8px);
+		height: 100%;
+		width: 100%;
+		z-index: -1;
+	    }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                
+            }
+
+            a:hover {
+                background-color: gray;
+		border-radius: 5px;
+		
+            }
+
+	    a {
+		display: inline-block;
+		padding: 5px 10px;
+		text-decoration: none;
+		color: black;
+	    }
+	    
+
+            #links {
+                display: flex;
+                flex-direction: column;
+                gap: 1vh;
+                border: 1px solid gray;
+                border-radius: 3px;
+                width: 10vw;
+                font-size:small; 
+                background-color: rgba(256,256,256,0.7);
+                text-align: center;
+		padding-bottom: 2vh;
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: 5vh;
+            }
+
+	    form {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 40vh;
+		gap: 1vh;
+		
+	    }
+
+	    #form-container {
+		text-align: center;
+		
+		background-color: rgba(50,50,50,0.7);
+		width: 40vw;
+		padding-left: 20px;
+		margin: 10px auto;
+		border-radius: 10px;
+		color: white;
+	    }
+
+	    div {
+		word-warp: break-word;
+		overflow-warp: break-word;
+	    }
+
+	    .usplogo {
+		width: 20vw;
+	    }
+
+	    @media (max-width: 800px) {
+		.imagem-grande {
+		    display: none;
+		}
+
+		body {
+		    font-size: 14px;
+		}
+
+		#links {
+		    width: 20vw;
+		}
+
+		#form-container {
+		    margin: 0px auto;
+		    width: 50vw;
+		    padding-left: 5px;
+		    margin: 2px auto;
+		    height: 52vh;
+		}
+
+		.logousp {
+		    width: 40vw;
+		    
+		    justify-content: center;
+		}
+		
+	    }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="usp-logo.png" class="logousp" id="img1">
+            <img src="usp-logo-texto.png" class="imagem-grande" style="width: 40vh;" id="img1">
+            
+        </header>
+        <div style="background-color:#fcb421; height: 1vh;">  </div>
+        <div style="background-color:#64c4d0; height: 1vh;">  </div>
+        <div style="background-color:#1094ab; height: 3vh;">  </div>
+
+	<div class="fundo">teste</div>
+
+        <div class="container">
+            <div>
+                <nav>
+                    <div id="links">
+                        <div style="background-color: gray; color: white;">
+                             Privado
+                        </div>
+                        
+                        <a>Calendário Escolar</a>
+                        <a>Cursos de ingresso</a>
+                        <a>Disciplina</a>
+                        <a>Editais</a>
+			<a>FAQ</a>
+			
+                    </div>
+                    
+                    <div id="links">
+                        <div style="background-color: gray; color: white;">
+                             Restrito
+                        </div>
+
+                        <a>Entrar</a>
+                        <a>Esqueci a Senha</a>
+                        <a>Primeiro Acesso</a>
+                    </div>
+                    
+                </nav>
+            </div>
+
+	    <div id="form-container">
+
+	      <h2>Formulário de Acesso</h2>
+		
+	      
+              <form>
+                <input type="text" placeholder="Usuário"> 
+                <input type="password" placeholder="Senha"> 
+		<a style="align-items: left; color: lightblue;">Esqueci a senha</a>
+                <input type="submit" value="Enviar" style="margin-top: 1vh;">
+		
+              </form>
+
+	    </div>
+        </div>
+
+    </body>
+
+
+
+</html>

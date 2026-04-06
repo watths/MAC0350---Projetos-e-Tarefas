@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelly Rosa Braghetto</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="sidebar">
+    <img src="fotokelly.jpeg" alt="Imagem" class="profile-img">
+    <h2>Kelly Rosa Braghetto</h2>
+    <a href="paginaprofessor.html" class="active">Main Page</a>
+    <a href="talks.html">Talks and Tutorials</a>
+    <a href="courses.html">Courses</a>
+    <a href="education.html">Education</a>
+    <a href="publications.html">Publications</a>
+    <a href="awards.html">Academic Awards</a>
+    <a href="files.html">Files</a>
+    <a href="software.html">Developed Softwares</a>
+    <a href="http://lattes.cnpq.br/5416099300504556">My Lattes Curriculum</a>
+  </div>
+
+  <div class="content">
+    <button id="toggleSidebar">☰ Menu</button>
+    <h1>Main Page</h1>
+
+    <section>
+      <h2>About</h2>
+      <p>Assistant Professor; <a href='https://www.ime.usp.br/dcc/index-english.php'> Department of Computer Science </a>; <a href='https://www.ime.usp.br'> Institute of Mathematics and Statistics </a>; <a href='https://www.usp.br/internacional/home.php?&idioma=en'> University of São Paulo </a> </p>
+      
+     <h2>Research Interests</h2>
+        <ul class="custom-list">
+	<li>Databases</li>
+	<li>Workflow Management</li>
+	<li>Business Process Management</li>
+	<li>Formal Methods and Models for System Design and Analysis</li>
+	<li>Performance Evaluation via Analytical Modeling</li>
+      </ul>
+
+   
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Office: IME/USP room C-224</p>
+      <p>Tel.: +55 11 3091-0750</p>
+      <p>Fax: +55 11 3091-6134</p>
+      <p>Email: <a href="mailto:kellyrb@ime.usp.br">kellyrb@ime.usp.br</a></p>
+      <p>Address:<br>
+	    Departamento de Ciência da Computação - IME - USP<br>
+	    Rua do Matão, 1010<br>
+	    Cidade Universitária - São Paulo - SP - Brasil<br>
+	    CEP: 05508-090</p>
+    </section>
+
+    <footer>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>

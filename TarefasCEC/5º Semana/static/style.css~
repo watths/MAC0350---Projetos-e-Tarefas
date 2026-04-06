@@ -1,0 +1,130 @@
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: white;
+      color: black;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: white;
+      padding: 2rem 1rem;
+      position: fixed;
+      height: 100vh;
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .sidebar.hidden {
+	transform: translateX(-100%);
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: rgb(256,100,10);   
+    }
+
+    .sidebar a {
+      display: block;
+      color: rgb(256,100,10);
+      text-decoration: none;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .sidebar a:hover {
+      background-color: orange;
+      color: white;
+    }
+
+    .sidebar a.active {
+	background-color: rgb(256,100,10); 
+	color: white;
+    }
+    
+    .content {
+      margin-left: 220px;
+      padding: 2rem;
+      flex: 1;
+      transition: margin-left 0.3s ease-in-out;
+    }
+
+    .content.full {
+	margin-left: 0;
+    }
+
+    .content h2 {
+	padding-bottom: 0.3rem;
+	border-bottom: 2px solid rgb(256,100,10);
+	color: rgb(256,100,10);
+    }
+
+    h1 {
+      color: rgb(256,100,10);
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      border-top: 1px solid rgb(256,100,10);
+      padding-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    #toggleSidebar {
+	background-color: rgb(256,100,10); 
+	color: white;            
+	border: 1px solid white;
+	padding: 0.4rem 0.8rem;
+	font-size: 1rem;
+	cursor: pointer;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+    #toggleSidebar:hover {
+	background-color: orange;
+	color: white;
+    }
+
+    .profile-img {
+	width: 120px;
+	height: 120px;
+	object-fit: cover;
+	border-radius: 50%;
+	display: block;
+	margin: 0 auto 1rem auto; 
+	border: 2px solid rgb(256,100,10);
+    }
+
+    ul.custom-list {
+       list-style: none;
+       padding-left: 0;
+       margin-top: 1rem;
+    }
+
+    ul.custom-list li {
+       background-color: white;
+       margin-bottom: 0.5rem;
+       padding: 0.6rem 1rem;
+       border-radius: 8px;
+       border-left: 4px solid rgb(256,100,10);
+       color: black;
+       transition: background-color 0.3s ease;
+       max-width: 500px;
+    }
+
+    ul.custom-list li:hover {
+       background-color: rgb(256,100,10);
+    }

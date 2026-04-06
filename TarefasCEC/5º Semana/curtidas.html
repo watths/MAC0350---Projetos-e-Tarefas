@@ -1,5 +1,7 @@
+<p>Curta abaixo</p>
+
 <h1 id="curtidas"> {{ contador }} </h1>
-	
+
 <button hx-post="/curtir"
 	hx-trigger="click"
 	hx-target="#curtidas"
@@ -10,14 +12,7 @@
 <button hx-put="/zerar"
 	hx-trigger="click"
 	hx-target="#curtidas"
-	hx-swap="innerHTML">
-  Zerar curtidas
+	hx-swap="innerHTML"
+	hx-confirm="Certeza que deseja zerar as curtidas?">
+  Zerar Curtidas
 </button>
-
-<div 
-  hx-get="/professor"
-  hx-trigger="keyup[(key=='p'||key=='P')] from:body"
-  hx-target="#container"
-  hx-swap="innerHTML">
-   
-</div>
