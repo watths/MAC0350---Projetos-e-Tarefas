@@ -7,14 +7,12 @@
 	<style>
 	  .btn {
 	      background: gray;
-	      color: white;
-	      padding: 10px;
-	      border: none;
 	      cursor: pointer;
 	  }
 
-	  .btn.active {
+	  .ativo {
 	      background: blue;
+	      cursor: pointer;
 	  }
 	</style>
 
@@ -24,44 +22,35 @@
     <body>
       <h1>Site</h1>
 
-      <nav>
-	<button class='btn'
-	        hx-get="/curtidas"
-		hx-target="#cont"
-		hx-swap="innerHTML"
-		onclick="setactive(this)">
-	  Curtidas
-	</button>
-	  
-	<button class='btn'
-	        hx-get="/jupiter"
-		hx-target="#cont"
-		hx-swap="innerHTML"
-		onclick="setactive(this)">
-	  Jupiter
-	</button>
-
-	<button class='btn'
-	        hx-get="/professor"
-		hx-target="#cont"
-		hx-swap="innerHTML"
-		onclick="setactive(this)">
-	  Página Kelly
-	</button>
-	
-      </nav>
-      
       <div id="cont">
+	<nav>
+	  <button class="{{ 'ativo' if ativo == 'curtidas' else 'btn' }}"
+	          hx-get="/curtidas"
+		  hx-target="#cont"
+		  hx-swap="innerHTML">
+	    Curtidas
+	  </button>
+	  
+	  <button class="{{ 'ativo' if ativo == 'jupiter' else 'btn' }}"
+	          hx-get="/jupiter"
+		  hx-target="#cont"
+		  hx-swap="innerHTML">
+	    Jupiter
+	  </button>
+
+	  <button class="{{ 'ativo' if ativo == 'professor' else 'btn' }}"
+	          hx-get="/professor"
+		  hx-target="#cont"
+		  hx-swap="innerHTML">
+	    Página Kelly
+	  </button>
+	  
+	</nav>
 
       </div>
       
       
     </body>
 
-      <script>
-      function setactive(elemento) {
-	  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
-	  elemento.classList.add('active');
-      }
-</script>
+      
 </html>

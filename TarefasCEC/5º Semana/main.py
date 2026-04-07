@@ -35,12 +35,12 @@ async def zerar(request : Request):
 @app.get("/curtidas", response_class=HTMLResponse)
 async def curtidas(request : Request):
     global contador
-    return templates.TemplateResponse(request, "contador.html",  {"contador": contador})
+    return templates.TemplateResponse(request, "contador.html",  {"contador": contador, "ativo": 'curtidas'})
 
 @app.get("/professor", response_class=HTMLResponse)
 async def prof(request : Request):
-    return templates.TemplateResponse(request, "paginaprofessor.html")
+    return templates.TemplateResponse(request, "paginaprofessor.html", {"ativo": 'professor'})
 
 @app.get("/jupiter", response_class=HTMLResponse)
 async def jup(request : Request):
-    return templates.TemplateResponse(request, "jupiter.html")
+    return templates.TemplateResponse(request, "jupiter.html", {"ativo": 'jupiter'})

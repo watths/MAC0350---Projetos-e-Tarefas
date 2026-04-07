@@ -1,3 +1,27 @@
+<nav>
+  <button class="{{ 'ativo' if ativo == 'curtidas' else 'btn' }}"
+	  hx-get="/curtidas"
+	  hx-target="#cont"
+	  hx-swap="innerHTML">
+    Curtidas
+  </button>
+  
+  <button class="{{ 'ativo' if ativo == 'jupiter' else 'btn' }}"
+	  hx-get="/jupiter"
+	  hx-target="#cont"
+	  hx-swap="innerHTML">
+    Jupiter
+  </button>
+
+  <button class="{{ 'ativo' if ativo == 'professor' else 'btn' }}"
+	  hx-get="/professor"
+	  hx-target="#cont"
+	  hx-swap="innerHTML">
+    Página Kelly
+  </button>
+  
+</nav>
+
 <h1 id="curtidas"> {{ contador }} </h1>
 	
 <button hx-post="/curtir"
@@ -10,13 +34,14 @@
 <button hx-put="/zerar"
 	hx-trigger="click"
 	hx-target="#curtidas"
-	hx-swap="innerHTML">
+	hx-swap="innerHTML"
+	hx-confirm="Tem certeza que deseja apagar as curtidas?">
   Zerar curtidas
 </button>
 
 <div 
   hx-get="/professor"
-  hx-trigger="keyup[(key=='p'||key=='P')] from:body"
+  hx-trigger="keydown[shiftKey && altKey && key=='P'] from:body"
   hx-target="#container"
   hx-swap="innerHTML">
    

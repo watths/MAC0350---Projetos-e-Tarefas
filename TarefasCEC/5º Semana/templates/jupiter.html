@@ -1,4 +1,27 @@
 
+<nav>
+  <button class="{{ 'ativo' if ativo == 'curtidas' else 'btn' }}"
+	  hx-get="/curtidas"
+	  hx-target="#cont"
+	  hx-swap="innerHTML">
+    Curtidas
+  </button>
+  
+  <button class="{{ 'ativo' if ativo == 'jupiter' else 'btn' }}"
+	  hx-get="/jupiter"
+	  hx-target="#cont"
+	  hx-swap="innerHTML">
+    Jupiter
+  </button>
+
+  <button class="{{ 'ativo' if ativo == 'professor' else 'btn' }}"
+	  hx-get="/professor"
+	  hx-target="#cont"
+	  hx-swap="innerHTML">
+    Página Kelly
+  </button>
+  
+</nav>
         <title>
             JupiterWeb
         </title>
