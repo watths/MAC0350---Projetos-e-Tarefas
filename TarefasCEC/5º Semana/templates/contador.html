@@ -39,10 +39,8 @@
   Zerar curtidas
 </button>
 
-<div 
-  hx-get="/professor"
-  hx-trigger="keydown[shiftKey && altKey && key=='P'] from:body"
-  hx-target="#container"
-  hx-swap="innerHTML">
-   
+<div hx-get="/jupiter"
+     hx-target="#cont"
+     hx-swap="innerHTML"
+     hx-trigger="keyup[shiftKey&&(key=='p'||key=='P')] from:body">
 </div>

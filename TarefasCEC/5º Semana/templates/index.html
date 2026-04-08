@@ -47,7 +47,15 @@
 	  
 	</nav>
 
+	<div hx-get="/curtidas"
+	     hx-target="#cont"
+	     hx-swap="innerHTML"
+	     hx-trigger="keyup[shiftKey&&(key=='p'||key=='P')] from:body">
+	</div>
+	
       </div>
+
+      
       
       
     </body>
