@@ -1,0 +1,41 @@
+from fastapi import FastAPI, Request, Form
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from Models import Aluno
+from contextlib import asynccontextmanager
+from sqlmodel import SQLModel, create_engine, Session, select
+
+@asynccontextmanager
+async def initFunction(app: FastAPI):
+    create_db_and_tables()
+    yield
+
+app = FastAPI(lifespan=initFunction)
+
+arquivo_sqlite = "HTMX2.db"
+url_sqlite = f"sqlite:///{arquivo_sqlite}"
+
+engine = create_engine(url_sqlite)
+
+templates = Jinja2Templates(directory=["Templates", "Templates/Partials"])
+
+def create_db_and_tables():
+    SQLModel.metadata.create_all(engine)
+ 
+def buscar_alunos():
+    with Session(engine) as session:
+        query = select(Aluno)
+        return session.exec(query).all()
+    
+@app.get("/busca", response_class=HTMLResponse)
+def busca(request: Request):
+    return templates.TemplateResponse(request, "index.html")
+
+@app.get("/lista", response_class=HTMLResponse)
+def lista(request: Request):
+    alunos = buscar_alunos()
+    return templates.TemplateResponse(request, "lista.html", {"alunos": alunos})
+    
+@app.get("/editarAlunos")
+def novoAluno(request: Request):
+    return templates.TemplateResponse(request, "options.html")
